@@ -2,30 +2,33 @@ import React, { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [inputMessage, setInputMessage] = useState("");
+  const [inputMessage, setInputMessage] = useState({});
   const [messagesArray, setMessagesArray] = useState([]);
 
   const onSendMessage = () => {
     setMessagesArray((prev) => [...prev, inputMessage]);
-    setInputMessage("");
+    setInputMessage({text: "", autor: ""});
   };
 
   return (
     <div className="mainWrapper">
       <div className="messageList">
         {messagesArray.map((message, i) => (
-          <div key={i}>{message}</div>
+          <div key={i}>
+            <div>{message.autor}</div>
+            <div>{message.text}</div>
+          </div>
         ))}
       </div>
 
       <div className="inputWrapper">
-        <input
+        <input 
           className="input"
-          value={inputMessage}
-          onChange={(e) => setInputMessage(e.target.value)}
+          value={inputMessage.text}
+          onChange={(e) => setInputMessage({text: e.target.value, autor: "Nikita:"})}
           onKeyDown={({ key }) => {
             if (key === "Enter") {
-              console.log("Enter");
+              //console.log("Enter");
               onSendMessage();
             }
           }}
