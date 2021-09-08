@@ -25,9 +25,13 @@ function App() {
     setGlobalMessagesArray((prev) => [...prev, {text: "Надеюсь Вас устроит мой ответ", autor: "robot:"}]);    
   };
 
+  const robotAnswerTime = 1500;
+
   useEffect(() => {
     if(userMessagesArray.length !== 0){
-        robotAnswer();
+        setTimeout(() => {
+          robotAnswer();
+        }, robotAnswerTime);        
     }    
   },[userMessagesArray]);
 
