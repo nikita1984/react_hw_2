@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import MessageList from "./MessageList.js";
 
 function App() {
   const [inputMessage, setInputMessage] = useState({});
@@ -10,17 +11,17 @@ function App() {
     setInputMessage({text: "", autor: ""});
   };
 
+  const renderMessageList = messagesArray.map((message, i) => (
+      <div key={i}>
+        <div>{message.autor}</div>
+        <div>{message.text}</div>
+      </div>
+  ))
+  
+
   return (
     <div className="mainWrapper">
-      <div className="messageList">
-        {messagesArray.map((message, i) => (
-          <div key={i}>
-            <div>{message.autor}</div>
-            <div>{message.text}</div>
-          </div>
-        ))}
-      </div>
-
+      <MessageList content={renderMessageList}></MessageList>    
       <div className="inputWrapper">
         <input 
           className="input"
