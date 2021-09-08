@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 
-const MessageList = (props) => {
+const MessageListComponent  = (props) => {
     return <div className="messageList">
         {props.content}
         </div>;
@@ -9,4 +9,4 @@ const MessageList = (props) => {
 };
 
 
-export default MessageList;
+export default MessageListComponent ;

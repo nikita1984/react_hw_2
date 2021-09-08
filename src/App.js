@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
-import MessageList from "./MessageList.js";
+import MessageListComponent  from "./MessageListComponent.js";
+import InputMessageComponent from "./InputMessageComponent";
 
 function App() {
   const [inputMessage, setInputMessage] = useState({});
@@ -21,19 +22,15 @@ function App() {
 
   return (
     <div className="mainWrapper">
-      <MessageList content={renderMessageList}></MessageList>    
+      <MessageListComponent content={renderMessageList}></MessageListComponent >    
       <div className="inputWrapper">
-        <input 
-          className="input"
-          value={inputMessage.text}
-          onChange={(e) => setInputMessage({text: e.target.value, autor: "Nikita:"})}
-          onKeyDown={({ key }) => {
-            if (key === "Enter") {
-              //console.log("Enter");
-              onSendMessage();
-            }
-          }}
-        />
+      <InputMessageComponent value={inputMessage.text} 
+        onChange={setInputMessage} 
+        onKeyDown={({ key }) => {
+        if (key === "Enter") {
+          onSendMessage();
+        }
+      }}></InputMessageComponent> 
         <button onClick={onSendMessage}>Отправить</button>
       </div>
     </div>
