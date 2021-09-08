@@ -31,7 +31,7 @@ function App() {
           onSendMessage();
         }
       }}></InputMessageComponent> 
-        <button onClick={onSendMessage}>Отправить</button>
+        <button className="button" onClick={onSendMessage}>Отправить</button>
       </div>
     </div>
   );
